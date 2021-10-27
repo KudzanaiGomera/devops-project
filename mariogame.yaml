@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariogame
+  labels:
+    app: mariogame
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: mariogame
+  template:
+    metadata:
+      labels:
+        app: mariogame
+    spec:
+      containers:
+      - name: mariogame
+        image: ghcr.io/felipecosta09/mariogame
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariogame
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 8443
+    targetPort: 8080
+  selector:
+    app: mariogame
