@@ -5,7 +5,7 @@ metadata:
   labels:
     app: mariogame
 spec:
-  replicas: 10
+  replicas: 6
   selector:
     matchLabels:
       app: mariogame
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: mariogame
-        image: ghcr.io/felipecosta09/mariogame
+        image: kgomera/mariogame
         ports:
         - containerPort: 8080
 ---
